@@ -1,7 +1,15 @@
 package tech.nocountry.mvp.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import tech.nocountry.mvp.domain.enums.Specialty;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Doctor {
     private int id;
     private String firstName;
