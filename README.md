@@ -31,7 +31,7 @@ Este proyecto es una aplicación en línea para la reserva de citas médicas. Pe
 ### Prerrequisitos
 - Node.js v20.15.1
 - Java Development Kit (JDK) 11 o superior
-- PostgreSQL
+- MySQL
 
 ### Configuración del Backend
 1. Clona el repositorio:
@@ -80,8 +80,17 @@ Este proyecto está licenciado bajo la Licencia MIT - mira el archivo [LICENSE](
     - **GitHub**: [vmolinas](https://github.com/vmolinas)
 
 - **Omar González**
-    - **Rol**: Desarrolladora Fullstack
+    - **Rol**: Desarrollador Fullstack
     - **LinkedIn**: [Omar González](https://www.linkedin.com/in/orgc)
     - **GitHub**: [ORCG1](https://github.com/ORCG1)
 
+- **Santiago Conrero**
+    - **Rol**: Desarrollador Frontend
+    - **LinkedIn**: [Santiago Conrero](https://www.linkedin.com/in/santiago-conrero-453315217/)
+    - **GitHub**: [santi1961](https://github.com/santi1961)
+
+- **Johanna Vicari**
+    - **Rol**: Diseñadora UX/UI
+    - **LinkedIn**: [Johanna Vicari](https://www.linkedin.com/in/johannavicari/)
+    - **Behance**: [johannavicari](https://www.behance.net/johannavicari)
 ---
