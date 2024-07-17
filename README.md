@@ -1,7 +1,7 @@
 # MediClinic
 
 ## Descripción
-Este proyecto es una aplicación en línea para la reserva de citas médicas. Permite a los pacientes reservar citas con doctores y gestionar sus consultas médicas en línea. La aplicación está construida usando React para el frontend, Java con Spring Boot para el backend y PostgreSQL como base de datos.
+Este proyecto es una aplicación en línea para la reserva de citas médicas. Permite a los pacientes reservar citas con doctores y gestionar sus consultas médicas en línea. La aplicación está construida usando React para el frontend, Java con Spring Boot para el backend y MySQL como base de datos.
 
 ## Tabla de Contenidos
 - [Características](#características)
@@ -40,11 +40,25 @@ Este proyecto es una aplicación en línea para la reserva de citas médicas. Pe
     cd c19-15-m-java-react/backend
     ```
 
-2. Configura la base de datos PostgreSQL en `application.properties`:
+2. Configura la base de datos MySQL en `application.properties`:
     ```properties
-    spring.datasource.url=jdbc:postgresql://localhost:5432/tubasededatos
-    spring.datasource.username=tuusuario
-    spring.datasource.password=tupassword
+    spring.datasource.url=jdbc:mysql://localhost:3306/mediClinicDB?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    spring.datasource.username=username
+    spring.datasource.password=password
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+    spring.jpa.database=mysql
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+    
+   #Show SQL
+    spring.jpa.properties.hibernate.show_sql=true
+
+    #Format SQL
+    spring.jpa.properties.hibernate.format_sql=true
+
+    logging.level.org.hibernate.orm.jdbc.bind=trace
     ```
 
 3. Construye y ejecuta la aplicación Spring Boot:

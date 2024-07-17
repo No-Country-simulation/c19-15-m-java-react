@@ -1,4 +1,4 @@
-package tech.nocountry.mvp.domain.enums;
+package tech.nocountry.mvp.enumeration;
 
 public enum Gender {
     MASCULINO,
