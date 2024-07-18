@@ -39,14 +39,7 @@
     "eslint": "^9.7.0"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "*.js, jsx": "npm run lint",
+    "*.{js, jsx,css,md,html,json}": "npm run lint:fix"
   }
 }
