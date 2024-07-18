@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "prepare": "husky",
-    "precommit": "npm run lint"
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.3.1",
