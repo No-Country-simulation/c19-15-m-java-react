@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint src/**/*.jsx",
-    "lint:fix": "eslint src/**/*.jsx --fix",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
     "prepare": "husky"
   },
   "dependencies": {
