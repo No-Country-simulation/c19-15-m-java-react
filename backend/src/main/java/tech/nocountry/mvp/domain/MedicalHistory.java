@@ -57,4 +57,6 @@ public class MedicalHistory {
     private String diagnosis;
     private String carePlan;
     private String doctorsNotes;
+    @OneToOne(mappedBy = "medicalHistoryId")
+    private Patient patient;
 }

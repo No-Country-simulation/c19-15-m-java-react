@@ -23,7 +23,7 @@ Este proyecto es una aplicación en línea para la reserva de citas médicas. Pe
 ## Tecnologías
 - Frontend: React con Tailwind
 - Backend: Java con Spring Boot
-- Base de Datos: PostgreSQL
+- Base de Datos: MySQL
 - Otras herramientas: Maven, JWT para seguridad
 
 ## Instalación

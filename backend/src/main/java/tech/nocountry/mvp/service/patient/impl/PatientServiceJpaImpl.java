@@ -31,6 +31,12 @@ public class PatientServiceJpaImpl implements PatientService {
 
     @Override
     public Optional<Patient> updatePatient(UUID patientId, PatientDTO patientDTO) {
-        return Optional.empty();
+        Optional<Patient> patientOptional = patientRepository.findById(patientId);
+        if (patientOptional.isPresent()) {
+            Patient patient = patientOptional.get();
+            patientMapper.patientDTOToPatient(patientDTO, patient);
+            patientRepository.save(patient);
+        }
+        return patientOptional;
     }
 }

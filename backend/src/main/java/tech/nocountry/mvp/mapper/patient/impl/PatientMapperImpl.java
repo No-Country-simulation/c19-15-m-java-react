@@ -13,6 +13,8 @@ public class PatientMapperImpl implements PatientMapper {
     public Patient patientDTOToPatient(PatientDTO patientDTO) {
         return Patient.builder()
                 .patientId(UUID.randomUUID())
+                .userName(patientDTO.getUserName())
+                .password(patientDTO.getPassword())
                 .firstName(patientDTO.getFirstName())
                 .lastName(patientDTO.getLastName())
                 .birthDate(patientDTO.getBirthDate())
@@ -24,13 +26,31 @@ public class PatientMapperImpl implements PatientMapper {
                 .country(patientDTO.getCountry())
                 .phone(patientDTO.getPhone())
                 .email(patientDTO.getEmail())
-                .medicalHistory(patientDTO.getMedicalHistory())
+                .medicalHistoryId(patientDTO.getMedicalHistoryId())
                 .build();
+    }
+
+    @Override
+    public Patient patientDTOToPatient(PatientDTO patientDTO, Patient patient) {
+        if (patientDTO.getFirstName() != null) patient.setFirstName(patientDTO.getFirstName());
+        if (patientDTO.getLastName() != null) patient.setLastName(patientDTO.getLastName());
+        if (patientDTO.getBirthDate() != null) patient.setBirthDate(patientDTO.getBirthDate());
+        if (patientDTO.getGender() != null) patient.setGender(patientDTO.getGender());
+        if (patientDTO.getStreet() != null) patient.setStreet(patientDTO.getStreet());
+        if (patientDTO.getCity() != null) patient.setCity(patientDTO.getCity());
+        if (patientDTO.getProvince() != null) patient.setProvince(patientDTO.getProvince());
+        if (patientDTO.getPostalCode() != null) patient.setPostalCode(patientDTO.getPostalCode());
+        if (patientDTO.getCountry() != null) patient.setCountry(patientDTO.getCountry());
+        if (patientDTO.getPhone() != null) patient.setPhone(patientDTO.getPhone());
+        if (patientDTO.getEmail() != null) patient.setEmail(patientDTO.getEmail());
+        return patient;
     }
 
     @Override
     public PatientDTO patientToPatientDTO(Patient patient) {
         return PatientDTO.builder()
+                .userName(patient.getUserName())
+                .password(patient.getPassword())
                 .firstName(patient.getFirstName())
                 .lastName(patient.getLastName())
                 .birthDate(patient.getBirthDate())
@@ -42,7 +62,7 @@ public class PatientMapperImpl implements PatientMapper {
                 .country(patient.getCountry())
                 .phone(patient.getPhone())
                 .email(patient.getEmail())
-                .medicalHistory(patient.getMedicalHistory())
+                .medicalHistoryId(patient.getMedicalHistoryId())
                 .build();
     }
 }

@@ -1,12 +1,15 @@
 package tech.nocountry.mvp.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
 import tech.nocountry.mvp.enumeration.Specialty;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -29,6 +32,13 @@ public class Doctor {
     private int licenseNumber;
     private int experience;
     private String phoneNumber;
+    @Email
     private String email;
     private String officeHours;
+    @ManyToMany
+    @JoinTable(
+            name = "patient_doctor",
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "patient_id"))
+    private List<Patient> patientList = new ArrayList<>();
 }
