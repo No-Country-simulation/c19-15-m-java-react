@@ -1,5 +1,4 @@
-# MediClinic
-![Logo del Proyecto](https://res.cloudinary.com/dxlipkjcl/image/upload/v1721513620/Cohorte%2019/ighhdk5yxojjxvbyms8k.png)
+# MediClinic <img src="https://res.cloudinary.com/dxlipkjcl/image/upload/v1721513620/Cohorte%2019/ighhdk5yxojjxvbyms8k.png" alt="Logo del Proyecto" width="50"/>
 
 ## Descripción
 Este proyecto es una aplicación en línea para la reserva de citas médicas. Permite a los pacientes reservar citas con doctores y gestionar sus consultas médicas en línea. La aplicación está construida usando React para el frontend, Java con Spring Boot para el backend y MySQL como base de datos.
