@@ -2,8 +2,8 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import eslintPluginPrettier from "eslint-plugin-prettier";
+import eslintConfigPrettier from "eslint-config-prettier";
 import { fixupConfigRules } from "@eslint/compat";
-
 
 export default [
   { files: ["**/*.{js,mjs,cjs,jsx}"] },
@@ -13,7 +13,7 @@ export default [
   ...fixupConfigRules(pluginReactConfig),
   {
     plugins: {
-      prettier: eslintPluginPrettier
+      prettier: eslintPluginPrettier,
     },
     settings: {
       react: {
@@ -24,7 +24,8 @@ export default [
   {
     rules: {
       "react/react-in-jsx-scope": "off",
-      'prettier/prettier': 'error',
-    }
-  }
+      ...eslintPluginPrettier.configs.recommended.rules,
+      ...eslintConfigPrettier.rules,
+    },
+  },
 ];
