@@ -1,4 +1,7 @@
 # MediClinic
+<p align="center">
+  <img src="https://res.cloudinary.com/dxlipkjcl/image/upload/v1721513620/Cohorte%2019/ighhdk5yxojjxvbyms8k.png" alt="Preview del Proyecto" width="400" />
+</p>
 
 ## Descripción
 Este proyecto es una aplicación en línea para la reserva de citas médicas. Permite a los pacientes reservar citas con doctores y gestionar sus consultas médicas en línea. La aplicación está construida usando React para el frontend, Java con Spring Boot para el backend y MySQL como base de datos.
@@ -23,7 +26,7 @@ Este proyecto es una aplicación en línea para la reserva de citas médicas. Pe
 ## Tecnologías
 - Frontend: React con Tailwind
 - Backend: Java con Spring Boot
-- Base de Datos: PostgreSQL
+- Base de Datos: MySQL
 - Otras herramientas: Maven, JWT para seguridad
 
 ## Instalación
@@ -87,24 +90,13 @@ Este proyecto es una aplicación en línea para la reserva de citas médicas. Pe
 ## Licencia
 Este proyecto está licenciado bajo la Licencia MIT - mira el archivo [LICENSE](LICENSE) para más detalles.
 
-## Integrantes del Equipo
-- **Victor Molinas**
-    - **Rol**: Desarrollador Backend
-    - **LinkedIn**: [Victor Molinas](https://www.linkedin.com/in/vmolinasg)
-    - **GitHub**: [vmolinas](https://github.com/vmolinas)
+## Equipo
 
-- **Omar González**
-    - **Rol**: Desarrollador Fullstack
-    - **LinkedIn**: [Omar González](https://www.linkedin.com/in/orgc)
-    - **GitHub**: [ORCG1](https://github.com/ORCG1)
+| Nombre           | Rol         | LinkedIn | GitHub | Behance |
+|------------------|-------------|----------|--------|---------|
+| Victor Molinas   | Backend     | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vmolinasg) | [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vmolinas) |  |
+| Omar González    | Frontend    | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/orgc) | [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ORCG1) |  |
+| Santiago Conrero | Frontend    | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santiago-conrero-453315217/) | [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/santi1961) |  |
+| Johanna Vicari   | UI/UX       | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/johannavicari/) |  | [![Behance](https://img.shields.io/badge/-Behance-blue?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/johannavicari) |
 
-- **Santiago Conrero**
-    - **Rol**: Desarrollador Frontend
-    - **LinkedIn**: [Santiago Conrero](https://www.linkedin.com/in/santiago-conrero-453315217/)
-    - **GitHub**: [santi1961](https://github.com/santi1961)
-
-- **Johanna Vicari**
-    - **Rol**: Diseñadora UX/UI
-    - **LinkedIn**: [Johanna Vicari](https://www.linkedin.com/in/johannavicari/)
-    - **Behance**: [johannavicari](https://www.behance.net/johannavicari)
 ---

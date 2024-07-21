@@ -2,7 +2,7 @@ package tech.nocountry.mvp.service.medicalHistory;
 
 import org.hibernate.validator.constraints.UUID;
 import tech.nocountry.mvp.domain.MedicalHistory;
-import tech.nocountry.mvp.model.dto.medicalHistory.MedicalHistoryDTO;
+import tech.nocountry.mvp.model.dto.MedicalHistoryDTO;
 
 import java.util.Optional;
 

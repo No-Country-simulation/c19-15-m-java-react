@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.UUID;
 import org.springframework.stereotype.Service;
 import tech.nocountry.mvp.domain.MedicalHistory;
 import tech.nocountry.mvp.mapper.medicalHistory.MedicalHistoryMapper;
-import tech.nocountry.mvp.model.dto.medicalHistory.MedicalHistoryDTO;
+import tech.nocountry.mvp.model.dto.MedicalHistoryDTO;
 import tech.nocountry.mvp.repository.MedicalHistoryRepository;
 import tech.nocountry.mvp.service.medicalHistory.MedicalHistoryService;
 
