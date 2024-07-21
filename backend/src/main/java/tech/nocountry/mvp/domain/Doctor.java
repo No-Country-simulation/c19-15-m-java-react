@@ -35,10 +35,10 @@ public class Doctor {
     @Email
     private String email;
     private String officeHours;
-    @ManyToMany
-    @JoinTable(
+    @ManyToMany(mappedBy = "doctorList", fetch = FetchType.LAZY)
+    /*@JoinTable(
             name = "patient_doctor",
             joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "patient_id"))
+            inverseJoinColumns = @JoinColumn(name = "patient_id"))*/
     private List<Patient> patientList = new ArrayList<>();
 }

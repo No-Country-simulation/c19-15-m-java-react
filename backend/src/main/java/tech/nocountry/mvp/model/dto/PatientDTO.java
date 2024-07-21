@@ -1,4 +1,4 @@
-package tech.nocountry.mvp.model.dto.patient;
+package tech.nocountry.mvp.model.dto;
 
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -13,7 +13,12 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class PatientDTO {
+
     private String userName;
+    private String email;
+    private String password;
+
+    /*private String userName;
     private String password;
     private String firstName;
     private String lastName;
@@ -27,5 +32,5 @@ public class PatientDTO {
     private String phone;
     @Email
     private String email;
-    private MedicalHistory medicalHistoryId;
+    private MedicalHistory medicalHistoryId;*/
 }

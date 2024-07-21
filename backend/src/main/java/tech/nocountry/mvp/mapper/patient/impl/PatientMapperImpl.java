@@ -3,10 +3,11 @@ package tech.nocountry.mvp.mapper.patient.impl;
 import org.springframework.stereotype.Component;
 import tech.nocountry.mvp.domain.Patient;
 import tech.nocountry.mvp.mapper.patient.PatientMapper;
-import tech.nocountry.mvp.model.dto.patient.PatientDTO;
+import tech.nocountry.mvp.model.dto.PatientDTO;
 
 import java.util.UUID;
 
+/*
 @Component
 public class PatientMapperImpl implements PatientMapper {
     @Override
@@ -63,6 +64,36 @@ public class PatientMapperImpl implements PatientMapper {
                 .phone(patient.getPhone())
                 .email(patient.getEmail())
                 .medicalHistoryId(patient.getMedicalHistoryId())
+                .build();
+    }
+}*/
+
+@Component
+public class PatientMapperImpl implements PatientMapper {
+    @Override
+    public Patient patientDTOToPatient(PatientDTO patientDTO) {
+        return Patient.builder()
+                .patientId(UUID.randomUUID())
+                .userName(patientDTO.getUserName())
+                .password(patientDTO.getPassword())
+                .email(patientDTO.getEmail())
+                .build();
+    }
+
+    @Override
+    public Patient patientDTOToPatient(PatientDTO patientDTO, Patient patient) {
+        if (patientDTO.getUserName() != null) patient.setUserName(patientDTO.getUserName());
+        if (patientDTO.getEmail() != null) patient.setEmail(patientDTO.getEmail());
+        if (patientDTO.getPassword() != null) patient.setPassword(patientDTO.getPassword());
+        return patient;
+    }
+
+    @Override
+    public PatientDTO patientToPatientDTO(Patient patient) {
+        return PatientDTO.builder()
+                .userName(patient.getUserName())
+                .email(patient.getEmail())
+                .password(patient.getPassword())
                 .build();
     }
 }

@@ -1,4 +1,4 @@
-package tech.nocountry.mvp.model.dto.medicalHistory;
+package tech.nocountry.mvp.model.dto;
 
 import lombok.*;
 import tech.nocountry.mvp.enumeration.Gender;
