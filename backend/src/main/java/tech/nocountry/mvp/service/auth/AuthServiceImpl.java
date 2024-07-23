@@ -1,14 +1,14 @@
-package tech.nocountry.mvp.service.auth.impl;
+package tech.nocountry.mvp.service.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tech.nocountry.mvp.domain.Patient;
+import tech.nocountry.mvp.enumeration.Role;
 import tech.nocountry.mvp.model.dto.LoginDTO;
 import tech.nocountry.mvp.model.dto.ResponseDTO;
 import tech.nocountry.mvp.model.validation.UserValidation;
 import tech.nocountry.mvp.repository.PatientRepository;
-import tech.nocountry.mvp.service.auth.IAuthService;
 import tech.nocountry.mvp.service.jwtSecurity.IJWTUtilityService;
 
 import java.util.List;
@@ -17,14 +17,17 @@ import java.util.Optional;
 @Service
 public class AuthServiceImpl implements IAuthService {
 
-    @Autowired
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
 
-    @Autowired
-    private IJWTUtilityService jwtUtilityService;
+    private final IJWTUtilityService jwtUtilityService;
 
-    @Autowired
-    private UserValidation userValidation;
+    private final UserValidation userValidation;
+
+    public AuthServiceImpl(PatientRepository patientRepository, IJWTUtilityService jwtUtilityService, UserValidation userValidation) {
+        this.patientRepository = patientRepository;
+        this.jwtUtilityService = jwtUtilityService;
+        this.userValidation = userValidation;
+    }
 
     @Override
     public ResponseDTO login(LoginDTO login) throws Exception {
@@ -61,7 +64,7 @@ public class AuthServiceImpl implements IAuthService {
             }
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
             patient.setPassword(encoder.encode(patient.getPassword()));
-            patient.getRole().add("ROLE_USER");
+            patient.setRole(Role.USER);
             patientRepository.save(patient);
             responseDTO.setMessage("User registered successfully");
             return responseDTO;

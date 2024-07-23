@@ -77,6 +77,7 @@ public class PatientMapperImpl implements PatientMapper {
                 .userName(patientDTO.getUserName())
                 .password(patientDTO.getPassword())
                 .email(patientDTO.getEmail())
+                .role(patientDTO.getRole())
                 .build();
     }
 
@@ -91,9 +92,10 @@ public class PatientMapperImpl implements PatientMapper {
     @Override
     public PatientDTO patientToPatientDTO(Patient patient) {
         return PatientDTO.builder()
-                .userName(patient.getUserName())
+                .userName(patient.getUsername())
                 .email(patient.getEmail())
                 .password(patient.getPassword())
+                .role(patient.getRole())
                 .build();
     }
 }

@@ -1,4 +1,4 @@
-package tech.nocountry.mvp.service.patient.impl;
+package tech.nocountry.mvp.service.patient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,8 +6,8 @@ import tech.nocountry.mvp.domain.Patient;
 import tech.nocountry.mvp.mapper.patient.PatientMapper;
 import tech.nocountry.mvp.model.dto.PatientDTO;
 import tech.nocountry.mvp.repository.PatientRepository;
-import tech.nocountry.mvp.service.patient.PatientService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -52,12 +52,22 @@ public class PatientServiceJpaImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> findAllPatients() {
-        return patientRepository.findAll();
+    public List<PatientDTO> findAllPatients() {
+        List<PatientDTO> patientDTOList = new ArrayList<>();
+        for (Patient patient : patientRepository.findAll()) {
+            patientDTOList.add(patientMapper.patientToPatientDTO(patient));
+        }
+        return patientDTOList;
     }
 
     @Override
     public Optional<Patient> findByEmail(String email) {
         return patientRepository.findByEmail(email);
+    }
+
+    @Override
+    public Optional<PatientDTO> getPatientById(UUID id) {
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+        return patientOptional.map(patientMapper::patientToPatientDTO);
     }
 }

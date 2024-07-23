@@ -28,24 +28,18 @@ public class PatientController {
     }
 
     @GetMapping("/findall")
-    @PreAuthorize("hasRole('USER')")
-    private ResponseEntity<List<Patient>> getAllPatients() {
-        return new ResponseEntity<>(patientService.findAllPatients(), HttpStatus.OK);
+    private List<PatientDTO> getAllPatients() {
+        /*return new ResponseEntity<>(patientService.findAllPatients(), HttpStatus.OK);*/
+        return patientService.findAllPatients();
     }
 
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Patient> updatePatient(@PathVariable UUID id, @RequestBody PatientDTO patientDTO) {
         Optional<Patient> updatedPatient = patientService.updatePatient(id, patientDTO);
-        if (updatedPatient.isPresent()) {
-            return new ResponseEntity<>(updatedPatient.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return updatedPatient.map(patient -> new ResponseEntity<>(patient, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Void> deletePatient(@PathVariable UUID id) {
         boolean isDeleted = patientService.deletePatient(id);
         if (isDeleted) {

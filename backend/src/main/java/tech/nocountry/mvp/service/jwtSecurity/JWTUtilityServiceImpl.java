@@ -1,4 +1,4 @@
-package tech.nocountry.mvp.service.jwtSecurity.impl;
+package tech.nocountry.mvp.service.jwtSecurity;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.RSASSASigner;
@@ -8,7 +8,6 @@ import com.nimbusds.jwt.SignedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-import tech.nocountry.mvp.service.jwtSecurity.IJWTUtilityService;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

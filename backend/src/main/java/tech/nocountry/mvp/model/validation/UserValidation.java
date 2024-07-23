@@ -6,9 +6,9 @@ import tech.nocountry.mvp.model.dto.ResponseDTO;
 public class UserValidation {
     public ResponseDTO validate(Patient user) {
        ResponseDTO response = new ResponseDTO();
-       if (user.getUserName() == null ||
-               user.getUserName().length() < 3 ||
-               user.getUserName().length() > 15) {
+       if (user.getUsername() == null ||
+               user.getUsername().length() < 3 ||
+               user.getUsername().length() > 15) {
            response.setMessage("El nombre de usuario debe ser de entre 4 y 10 caracteres");
        }
        if (user.getPassword() == null||

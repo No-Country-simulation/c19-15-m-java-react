@@ -11,4 +11,6 @@ public interface PatientRepository extends JpaRepository<Patient, UUID> {
 
     @Query(value = "SELECT * FROM patient WHERE email = :email", nativeQuery = true)
     Optional<Patient> findByEmail(String email);
+    Optional<Patient> findById(UUID uuid);
+    /*Optional<Patient> findByName(String name);*/
 }
