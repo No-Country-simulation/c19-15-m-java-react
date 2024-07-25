@@ -1,20 +1,25 @@
-package tech.nocountry.mvp.mapper.patient.impl;
+package tech.nocountry.mvp.mapper.patient;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import tech.nocountry.mvp.domain.Patient;
-import tech.nocountry.mvp.mapper.patient.PatientMapper;
 import tech.nocountry.mvp.model.dto.PatientDTO;
 
 import java.util.UUID;
 
-/*
 @Component
 public class PatientMapperImpl implements PatientMapper {
+
+    private final PasswordEncoder passwordEncoder;
+
+    public PatientMapperImpl(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @Override
     public Patient patientDTOToPatient(PatientDTO patientDTO) {
         return Patient.builder()
                 .patientId(UUID.randomUUID())
-                .userName(patientDTO.getUserName())
                 .password(patientDTO.getPassword())
                 .firstName(patientDTO.getFirstName())
                 .lastName(patientDTO.getLastName())
@@ -28,6 +33,7 @@ public class PatientMapperImpl implements PatientMapper {
                 .phone(patientDTO.getPhone())
                 .email(patientDTO.getEmail())
                 .medicalHistoryId(patientDTO.getMedicalHistoryId())
+                .role(patientDTO.getRole())
                 .build();
     }
 
@@ -44,13 +50,15 @@ public class PatientMapperImpl implements PatientMapper {
         if (patientDTO.getCountry() != null) patient.setCountry(patientDTO.getCountry());
         if (patientDTO.getPhone() != null) patient.setPhone(patientDTO.getPhone());
         if (patientDTO.getEmail() != null) patient.setEmail(patientDTO.getEmail());
+        if (patientDTO.getPassword() != null) patient.setPassword(passwordEncoder.encode(patientDTO.getPassword()));
+        if (patientDTO.getRole() != null) patient.setRole(patientDTO.getRole());
+        if (patientDTO.getMedicalHistoryId() != null) patient.setMedicalHistoryId(patientDTO.getMedicalHistoryId());
         return patient;
     }
 
     @Override
     public PatientDTO patientToPatientDTO(Patient patient) {
         return PatientDTO.builder()
-                .userName(patient.getUserName())
                 .password(patient.getPassword())
                 .firstName(patient.getFirstName())
                 .lastName(patient.getLastName())
@@ -64,37 +72,6 @@ public class PatientMapperImpl implements PatientMapper {
                 .phone(patient.getPhone())
                 .email(patient.getEmail())
                 .medicalHistoryId(patient.getMedicalHistoryId())
-                .build();
-    }
-}*/
-
-@Component
-public class PatientMapperImpl implements PatientMapper {
-    @Override
-    public Patient patientDTOToPatient(PatientDTO patientDTO) {
-        return Patient.builder()
-                .patientId(UUID.randomUUID())
-                .userName(patientDTO.getUserName())
-                .password(patientDTO.getPassword())
-                .email(patientDTO.getEmail())
-                .role(patientDTO.getRole())
-                .build();
-    }
-
-    @Override
-    public Patient patientDTOToPatient(PatientDTO patientDTO, Patient patient) {
-        if (patientDTO.getUserName() != null) patient.setUserName(patientDTO.getUserName());
-        if (patientDTO.getEmail() != null) patient.setEmail(patientDTO.getEmail());
-        if (patientDTO.getPassword() != null) patient.setPassword(patientDTO.getPassword());
-        return patient;
-    }
-
-    @Override
-    public PatientDTO patientToPatientDTO(Patient patient) {
-        return PatientDTO.builder()
-                .userName(patient.getUsername())
-                .email(patient.getEmail())
-                .password(patient.getPassword())
                 .role(patient.getRole())
                 .build();
     }

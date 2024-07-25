@@ -23,6 +23,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Builder
+@Table(name = "doctor")
 public class Doctor implements UserDetails {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -30,12 +31,14 @@ public class Doctor implements UserDetails {
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
     private UUID doctorId;
+    @Column(nullable = false)
+    private String password;
     private String firstName;
     private String lastName;
     @Enumerated(EnumType.STRING)
     private Specialty specialty;
-    private int licenseNumber;
-    private int experience;
+    private Integer licenseNumber;
+    private Integer experience;
     private String phoneNumber;
     @Email
     @Column(nullable = false, unique = true)
@@ -45,6 +48,9 @@ public class Doctor implements UserDetails {
     private List<Patient> patientList = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Appointment> appointments;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

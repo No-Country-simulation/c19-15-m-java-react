@@ -45,7 +45,6 @@ public class Patient implements UserDetails {
     private String postalCode;
     private String country;
     private String phone;
-    @Email
     @Column(nullable = false, unique = true)
     private String email;
     @OneToOne(cascade = CascadeType.ALL)
@@ -58,6 +57,10 @@ public class Patient implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "doctor_id")
     )
     private List<Doctor> doctorList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Appointment> appointments;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

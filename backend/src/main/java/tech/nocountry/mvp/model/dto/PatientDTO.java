@@ -15,15 +15,6 @@ import java.util.List;
 @Setter
 @Builder
 public class PatientDTO {
-
-    private String userName;
-    private String email;
-    private String password;
-    private List<MedicalHistoryDTO> medicalHistory;
-    private Role role;
-
-    /*private String userName;
-    private String password;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
@@ -36,5 +27,7 @@ public class PatientDTO {
     private String phone;
     @Email
     private String email;
-    private MedicalHistory medicalHistoryId;*/
+    private String password;
+    private MedicalHistory medicalHistoryId;
+    private Role role;
 }
