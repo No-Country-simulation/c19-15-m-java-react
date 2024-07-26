@@ -1,8 +1,7 @@
-package tech.nocountry.mvp.mapper.medicalHistory.impl;
+package tech.nocountry.mvp.mapper.medicalHistory;
 
 import org.springframework.stereotype.Component;
 import tech.nocountry.mvp.domain.MedicalHistory;
-import tech.nocountry.mvp.mapper.medicalHistory.MedicalHistoryMapper;
 import tech.nocountry.mvp.model.dto.MedicalHistoryDTO;
 
 import java.util.UUID;

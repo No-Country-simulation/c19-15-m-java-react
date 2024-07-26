@@ -2,12 +2,15 @@ package tech.nocountry.mvp.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import tech.nocountry.mvp.enumeration.Gender;
+import tech.nocountry.mvp.enumeration.Role;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -19,18 +22,20 @@ import java.util.*;
 @Builder
 @Entity
 @Table(name = "patient")
-public class Patient {
+public class Patient implements UserDetails {
     @Id
     @GeneratedValue(generator = "UUID")
     @UuidGenerator
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
     private UUID patientId;
-    @Column(nullable = false, unique = true)
-    private String userName;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false)
     private LocalDate birthDate;
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -40,8 +45,7 @@ public class Patient {
     private String postalCode;
     private String country;
     private String phone;
-    @Email
-    @NotNull
+    @Column(nullable = false, unique = true)
     private String email;
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
@@ -53,6 +57,20 @@ public class Patient {
             inverseJoinColumns = @JoinColumn(name = "doctor_id")
     )
     private List<Doctor> doctorList = new ArrayList<>();
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<String> role = new HashSet<>();
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Appointment> appointments;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
+    }
 }

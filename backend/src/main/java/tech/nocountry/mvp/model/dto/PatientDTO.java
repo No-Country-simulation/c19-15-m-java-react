@@ -4,8 +4,10 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 import tech.nocountry.mvp.domain.MedicalHistory;
 import tech.nocountry.mvp.enumeration.Gender;
+import tech.nocountry.mvp.enumeration.Role;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,13 +15,6 @@ import java.time.LocalDate;
 @Setter
 @Builder
 public class PatientDTO {
-
-    private String userName;
-    private String email;
-    private String password;
-
-    /*private String userName;
-    private String password;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
@@ -32,5 +27,7 @@ public class PatientDTO {
     private String phone;
     @Email
     private String email;
-    private MedicalHistory medicalHistoryId;*/
+    private String password;
+    private MedicalHistory medicalHistoryId;
+    private Role role;
 }

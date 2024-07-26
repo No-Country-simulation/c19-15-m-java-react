@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tech.nocountry.mvp.domain.Doctor;
 import tech.nocountry.mvp.domain.Patient;
 import tech.nocountry.mvp.model.dto.LoginDTO;
 import tech.nocountry.mvp.model.dto.ResponseDTO;
@@ -32,7 +33,7 @@ public class AuthController {
     private ResponseEntity<ResponseDTO> login(@RequestBody LoginDTO login) {
         try {
             ResponseDTO response = authService.login(login);
-            if (response.getMessage() != null) {
+            if (response.getMessages() != null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
             }
             return ResponseEntity.ok(response);
@@ -40,4 +41,5 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDTO());
         }
     }
+
 }

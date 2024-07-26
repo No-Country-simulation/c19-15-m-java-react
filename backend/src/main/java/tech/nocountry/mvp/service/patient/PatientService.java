@@ -11,6 +11,7 @@ public interface PatientService {
     Patient createPatient(PatientDTO patientDTO);
     boolean deletePatient(UUID patientId);
     Optional<Patient> updatePatient(UUID patientId, PatientDTO patientDTO);
-    List<Patient> findAllPatients();
+    List<PatientDTO> findAllPatients();
     Optional<Patient> findByEmail(String email);
+    Optional<PatientDTO> getPatientById(UUID id);
 }
