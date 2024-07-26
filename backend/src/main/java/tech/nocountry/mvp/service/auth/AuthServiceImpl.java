@@ -12,8 +12,9 @@ import tech.nocountry.mvp.model.validation.UserValidation;
 import tech.nocountry.mvp.repository.DoctorRepository;
 import tech.nocountry.mvp.repository.PatientRepository;
 import tech.nocountry.mvp.service.jwtSecurity.IJWTUtilityService;
+import tech.nocountry.mvp.service.auth.TokenBlacklistService;
 
-import java.util.List;
+
 import java.util.Optional;
 
 @Slf4j
@@ -28,43 +29,55 @@ public class AuthServiceImpl implements IAuthService {
 
     private final UserValidation userValidation;
 
-    public AuthServiceImpl(PatientRepository patientRepository, DoctorRepository doctorRepository, IJWTUtilityService jwtUtilityService, UserValidation userValidation) {
+    private final TokenBlacklistService tokenBlacklistService;
+
+
+    public AuthServiceImpl(PatientRepository patientRepository, DoctorRepository doctorRepository, IJWTUtilityService jwtUtilityService, UserValidation userValidation, TokenBlacklistService tokenBlacklistService) {
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
         this.jwtUtilityService = jwtUtilityService;
         this.userValidation = userValidation;
+        this.tokenBlacklistService = tokenBlacklistService;
     }
 
     @Override
-    public ResponseDTO register(Patient patient) throws Exception {
+    public ResponseDTO register(Patient patient) {
         ResponseDTO response = new ResponseDTO();
         try {
+            // Válida al paciente y obtiene el ResponseDTO.
             response = userValidation.validate(patient);
-            if (response.getMessages() != null){
+
+            // Si hay mensajes, la validación falló.
+            if (!response.getMessages().isEmpty()) {
                 return response;
             }
+
+            // Verifica si el paciente ya existe.
             Optional<Patient> existingPatient = patientRepository.findByEmail(patient.getEmail());
             if (existingPatient.isPresent()) {
                 response.addMessage("El usuario ya existe.");
                 return response;
             }
+
+            // Codifica la contraseña y guarda el paciente.
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
             patient.setPassword(encoder.encode(patient.getPassword()));
             patient.setRole(Role.USER);
             patientRepository.save(patient);
-            response.addMessage("Usuario registrado con éxito.");
 
-        } catch (Exception e){
-            response.addMessage("Error en el registro: "+e.getMessage());
+            // Añade un mensaje de éxito.
+            response.addMessage("Usuario registrado con éxito.");
+        } catch (Exception e) {
+            response.addMessage("Error en el registro: " + e.getMessage());
         }
         return response;
-
     }
 
     @Override
-    public ResponseDTO login(LoginDTO login) throws Exception {
+    public ResponseDTO login(LoginDTO login) {
+        ResponseDTO response = new ResponseDTO();
+
         try {
-            ResponseDTO response = new ResponseDTO();
             Optional<Patient> patient = patientRepository.findByEmail(login.getEmail());
 
             if (patient.isPresent()) {
@@ -86,14 +99,30 @@ public class AuthServiceImpl implements IAuthService {
                 }
             }
 
-            return response;
         } catch (Exception e) {
-            throw new Exception(e.toString());
+            response.addMessage("Error en el proceso de autenticación: " + e.getMessage());
         }
+
+        return response;
     }
-    
-    private boolean verifyPassword(String password, String passwordConfirmation) {
+
+    @Override
+    public ResponseDTO logout(String token) {
+        ResponseDTO response = new ResponseDTO();
+
+        try {
+            tokenBlacklistService.blacklistToken(token);
+
+            response.addMessage("Cierre de sesión exitoso.");
+        } catch (Exception e) {
+            response.addMessage("Error durante el cierre de sesión: " + e.getMessage());
+        }
+
+        return response;
+    }
+
+    private boolean verifyPassword(String password, String passwordHash) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        return encoder.matches(password, passwordConfirmation);
+        return encoder.matches(password, passwordHash);
     }
 }

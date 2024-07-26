@@ -5,6 +5,7 @@ import tech.nocountry.mvp.model.dto.LoginDTO;
 import tech.nocountry.mvp.model.dto.ResponseDTO;
 
 public interface IAuthService {
-    public ResponseDTO register(Patient patient) throws Exception;
-    public ResponseDTO login(LoginDTO login) throws Exception;
+    ResponseDTO register(Patient patient);
+    ResponseDTO login(LoginDTO login);
+    ResponseDTO logout(String token);
 }
