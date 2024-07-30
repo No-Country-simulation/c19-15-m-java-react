@@ -1,6 +1,6 @@
 # MediClinic
 <p align="center">
-  <img src="https://res.cloudinary.com/dxlipkjcl/image/upload/v1721513620/Cohorte%2019/ighhdk5yxojjxvbyms8k.png" alt="Preview del Proyecto" width="400" />
+  <img src="https://res.cloudinary.com/dxlipkjcl/image/upload/v1722338984/Cohorte%2019/logo_mecufo.svg" alt="Preview del Proyecto" width="400" />
 </p>
 
 ## Descripción
