@@ -95,8 +95,6 @@ Este proyecto está licenciado bajo la Licencia MIT - mira el archivo [LICENSE](
 | Nombre           | Rol         | LinkedIn | GitHub | Behance |
 |------------------|-------------|----------|--------|---------|
 | Victor Molinas   | Backend     | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vmolinasg) | [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vmolinas) |  |
-| Omar González    | Frontend    | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/orgc) | [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ORCG1) |  |
-| Santiago Conrero | Frontend    | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santiago-conrero-453315217/) | [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/santi1961) |  |
 | Johanna Vicari   | UI/UX       | [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/johannavicari/) |  | [![Behance](https://img.shields.io/badge/-Behance-blue?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/johannavicari) |
 
 ---
