@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.nocountry.mvp.domain.Doctor;
 import tech.nocountry.mvp.domain.Patient;
 import tech.nocountry.mvp.model.dto.LoginDTO;
 import tech.nocountry.mvp.model.dto.ResponseDTO;

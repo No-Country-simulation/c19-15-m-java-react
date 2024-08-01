@@ -1,7 +1,6 @@
 package tech.nocountry.mvp.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
@@ -29,9 +28,9 @@ public class Doctor implements UserDetails {
     @GeneratedValue(generator = "UUID")
     @UuidGenerator
     @JdbcTypeCode(SqlTypes.CHAR)
-    @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID doctorId;
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
     private String firstName;
     private String lastName;
@@ -40,7 +39,6 @@ public class Doctor implements UserDetails {
     private Integer licenseNumber;
     private Integer experience;
     private String phoneNumber;
-    @Email
     @Column(nullable = false, unique = true)
     private String email;
     private String officeHours;
@@ -50,7 +48,7 @@ public class Doctor implements UserDetails {
     private Role role;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<Appointment> appointments;
+    private List<Appointment> appointments = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,7 +57,7 @@ public class Doctor implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return password;
     }
 
     @Override

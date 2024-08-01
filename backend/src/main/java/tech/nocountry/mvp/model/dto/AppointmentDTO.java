@@ -11,6 +11,7 @@ import java.util.UUID;
 @Setter
 @RequiredArgsConstructor
 public class AppointmentDTO {
+    private UUID appointmentId;
     private UUID patientId;
     private UUID doctorId;
     private LocalDateTime appointmentDate;

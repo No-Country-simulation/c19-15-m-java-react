@@ -1,7 +1,6 @@
 package tech.nocountry.mvp.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
@@ -24,7 +23,7 @@ import java.util.*;
 @Table(name = "patient")
 public class Patient implements UserDetails {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @UuidGenerator
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
@@ -59,7 +58,7 @@ public class Patient implements UserDetails {
     private List<Doctor> doctorList = new ArrayList<>();
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
-    private List<Appointment> appointments;
+    private List<Appointment> appointments = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Role role;

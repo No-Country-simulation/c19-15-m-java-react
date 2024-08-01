@@ -10,6 +10,6 @@ import java.text.ParseException;
 import java.util.UUID;
 
 public interface IJWTUtilityService {
-    public String generateJWT(UUID userId) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, JOSEException;
-    public JWTClaimsSet parseJWT(String jwt) throws JOSEException, IOException, NoSuchAlgorithmException, InvalidKeySpecException, ParseException;
+    String generateJWT(UUID userId) throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, JOSEException;
+    JWTClaimsSet parseJWT(String jwt) throws JOSEException, IOException, NoSuchAlgorithmException, InvalidKeySpecException, ParseException;
 }

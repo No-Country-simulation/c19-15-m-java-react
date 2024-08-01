@@ -1,20 +1,25 @@
 package tech.nocountry.mvp.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Appointment {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @UuidGenerator
+    @JdbcTypeCode(SqlTypes.CHAR)
+    @Column(length = 36,columnDefinition = "varchar(36)",updatable = false,nullable = false)
     private UUID appointmentId;
 
     @ManyToOne

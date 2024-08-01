@@ -23,7 +23,6 @@ public class MedicalHistoryController {
         this.medicalHistoryService = medicalHistoryService;
     }
 
-    /*CREATE*/
     @PostMapping()
     public ResponseEntity<MedicalHistoryDTO> create(@RequestBody MedicalHistoryDTO medicalHistoryDTO) {
         log.info("Creating MedicalHistory: {}", medicalHistoryDTO);

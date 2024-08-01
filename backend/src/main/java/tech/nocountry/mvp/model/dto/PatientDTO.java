@@ -1,13 +1,11 @@
 package tech.nocountry.mvp.model.dto;
 
-import jakarta.validation.constraints.Email;
 import lombok.*;
 import tech.nocountry.mvp.domain.MedicalHistory;
 import tech.nocountry.mvp.enumeration.Gender;
 import tech.nocountry.mvp.enumeration.Role;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +23,6 @@ public class PatientDTO {
     private String postalCode;
     private String country;
     private String phone;
-    @Email
     private String email;
     private String password;
     private MedicalHistory medicalHistoryId;

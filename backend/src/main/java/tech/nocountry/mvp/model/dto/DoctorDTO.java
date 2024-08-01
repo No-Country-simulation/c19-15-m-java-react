@@ -21,7 +21,6 @@ public class DoctorDTO {
     private Integer licenseNumber;
     private Integer experience;
     private String phoneNumber;
-    @Email
     private String email;
     private String password;
     private String officeHours;

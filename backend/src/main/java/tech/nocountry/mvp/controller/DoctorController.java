@@ -42,15 +42,4 @@ public class DoctorController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateDoctor(@PathVariable UUID id, @RequestBody DoctorDTO doctorUpdated)
-            throws ChangeSetPersister.NotFoundException {
-        Optional<Doctor> doctor = doctorService.updateDoctor(id, doctorUpdated);
-        if(doctor.isEmpty()){
-            throw new ChangeSetPersister.NotFoundException();
-        }else {
-            return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-    }
 }

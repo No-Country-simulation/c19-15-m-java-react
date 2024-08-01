@@ -1,6 +1,5 @@
 package tech.nocountry.mvp.service.auth;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tech.nocountry.mvp.domain.Doctor;
@@ -12,12 +11,9 @@ import tech.nocountry.mvp.model.validation.UserValidation;
 import tech.nocountry.mvp.repository.DoctorRepository;
 import tech.nocountry.mvp.repository.PatientRepository;
 import tech.nocountry.mvp.service.jwtSecurity.IJWTUtilityService;
-import tech.nocountry.mvp.service.auth.TokenBlacklistService;
-
 
 import java.util.Optional;
 
-@Slf4j
 @Service
 public class AuthServiceImpl implements IAuthService {
 
@@ -30,7 +26,6 @@ public class AuthServiceImpl implements IAuthService {
     private final UserValidation userValidation;
 
     private final TokenBlacklistService tokenBlacklistService;
-
 
     public AuthServiceImpl(PatientRepository patientRepository, DoctorRepository doctorRepository, IJWTUtilityService jwtUtilityService, UserValidation userValidation, TokenBlacklistService tokenBlacklistService) {
         this.patientRepository = patientRepository;
@@ -79,7 +74,6 @@ public class AuthServiceImpl implements IAuthService {
 
         try {
             Optional<Patient> patient = patientRepository.findByEmail(login.getEmail());
-
             if (patient.isPresent()) {
                 if (verifyPassword(login.getPassword(), patient.get().getPassword())) {
                     response.setJwt(jwtUtilityService.generateJWT(patient.get().getPatientId()));
@@ -92,7 +86,7 @@ public class AuthServiceImpl implements IAuthService {
                     if (verifyPassword(login.getPassword(), doctor.get().getPassword())) {
                         response.setJwt(jwtUtilityService.generateJWT(doctor.get().getDoctorId()));
                     } else {
-                        response.addMessage("Contraseña doctor inválida");
+                        response.addMessage("Contraseña inválida");
                     }
                 } else {
                     response.addMessage("Correo electrónico o contraseña inválidos");
@@ -109,7 +103,6 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public ResponseDTO logout(String token) {
         ResponseDTO response = new ResponseDTO();
-
         try {
             tokenBlacklistService.blacklistToken(token);
 
@@ -117,7 +110,6 @@ public class AuthServiceImpl implements IAuthService {
         } catch (Exception e) {
             response.addMessage("Error durante el cierre de sesión: " + e.getMessage());
         }
-
         return response;
     }
 

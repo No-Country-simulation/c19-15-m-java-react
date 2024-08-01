@@ -12,5 +12,4 @@ import java.util.UUID;
 public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
     @Query(value = "SELECT * FROM doctor WHERE email = :email", nativeQuery = true)
     Optional<Doctor> findByEmail(String email);
-   /* Optional<Doctor> findById(UUID uuid);*/
 }
